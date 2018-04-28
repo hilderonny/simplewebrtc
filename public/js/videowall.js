@@ -3,7 +3,7 @@ var videowall = {
     rtc: null,
     clients: {},
     videolisttag: null,
-    localvideotag: document.createElement("video"),
+    localvideotag: null,
     // Called when the page is loaded and a list of already connected clients is fetched
     onclientlist: function(clientlist) {
         videowall.clients = clientlist;
@@ -38,7 +38,9 @@ var videowall = {
 
         // Init local video
         videowall.videolisttag = document.querySelector(selector);
+        videowall.localvideotag = document.createElement("video");
         videowall.localvideotag.autoplay = "autoplay";
+        videowall.localvideotag.muted = true;
         videowall.videolisttag.appendChild(videowall.localvideotag);
 
         // Init WebRTC
